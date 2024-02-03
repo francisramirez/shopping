@@ -1,0 +1,12 @@
+D:\itlaproII\shopping\Shopping\shopping.Ioc\bin\Debug\net6.0\shopping.Ioc.deps.json
+D:\itlaproII\shopping\Shopping\shopping.Ioc\bin\Debug\net6.0\shopping.Ioc.dll
+D:\itlaproII\shopping\Shopping\shopping.Ioc\bin\Debug\net6.0\shopping.Ioc.pdb
+D:\itlaproII\shopping\Shopping\shopping.Ioc\obj\Debug\net6.0\shopping.Ioc.csproj.AssemblyReference.cache
+D:\itlaproII\shopping\Shopping\shopping.Ioc\obj\Debug\net6.0\shopping.Ioc.GeneratedMSBuildEditorConfig.editorconfig
+D:\itlaproII\shopping\Shopping\shopping.Ioc\obj\Debug\net6.0\shopping.Ioc.AssemblyInfoInputs.cache
+D:\itlaproII\shopping\Shopping\shopping.Ioc\obj\Debug\net6.0\shopping.Ioc.AssemblyInfo.cs
+D:\itlaproII\shopping\Shopping\shopping.Ioc\obj\Debug\net6.0\shopping.Ioc.csproj.CoreCompileInputs.cache
+D:\itlaproII\shopping\Shopping\shopping.Ioc\obj\Debug\net6.0\shopping.Ioc.dll
+D:\itlaproII\shopping\Shopping\shopping.Ioc\obj\Debug\net6.0\refint\shopping.Ioc.dll
+D:\itlaproII\shopping\Shopping\shopping.Ioc\obj\Debug\net6.0\shopping.Ioc.pdb
+D:\itlaproII\shopping\Shopping\shopping.Ioc\obj\Debug\net6.0\ref\shopping.Ioc.dll

@@ -1,0 +1,12 @@
+D:\itlaproII\shopping\Shopping\shopping.Domain\bin\Debug\net6.0\shopping.Domain.deps.json
+D:\itlaproII\shopping\Shopping\shopping.Domain\bin\Debug\net6.0\shopping.Domain.dll
+D:\itlaproII\shopping\Shopping\shopping.Domain\bin\Debug\net6.0\shopping.Domain.pdb
+D:\itlaproII\shopping\Shopping\shopping.Domain\obj\Debug\net6.0\shopping.Domain.csproj.AssemblyReference.cache
+D:\itlaproII\shopping\Shopping\shopping.Domain\obj\Debug\net6.0\shopping.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\itlaproII\shopping\Shopping\shopping.Domain\obj\Debug\net6.0\shopping.Domain.AssemblyInfoInputs.cache
+D:\itlaproII\shopping\Shopping\shopping.Domain\obj\Debug\net6.0\shopping.Domain.AssemblyInfo.cs
+D:\itlaproII\shopping\Shopping\shopping.Domain\obj\Debug\net6.0\shopping.Domain.csproj.CoreCompileInputs.cache
+D:\itlaproII\shopping\Shopping\shopping.Domain\obj\Debug\net6.0\shopping.Domain.dll
+D:\itlaproII\shopping\Shopping\shopping.Domain\obj\Debug\net6.0\refint\shopping.Domain.dll
+D:\itlaproII\shopping\Shopping\shopping.Domain\obj\Debug\net6.0\shopping.Domain.pdb
+D:\itlaproII\shopping\Shopping\shopping.Domain\obj\Debug\net6.0\ref\shopping.Domain.dll

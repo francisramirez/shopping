@@ -1,0 +1,12 @@
+D:\itlaproII\shopping\Shopping\shopping.Infrastructure\bin\Debug\net6.0\shopping.Infrastructure.deps.json
+D:\itlaproII\shopping\Shopping\shopping.Infrastructure\bin\Debug\net6.0\shopping.Infrastructure.dll
+D:\itlaproII\shopping\Shopping\shopping.Infrastructure\bin\Debug\net6.0\shopping.Infrastructure.pdb
+D:\itlaproII\shopping\Shopping\shopping.Infrastructure\obj\Debug\net6.0\shopping.Infrastructure.csproj.AssemblyReference.cache
+D:\itlaproII\shopping\Shopping\shopping.Infrastructure\obj\Debug\net6.0\shopping.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\itlaproII\shopping\Shopping\shopping.Infrastructure\obj\Debug\net6.0\shopping.Infrastructure.AssemblyInfoInputs.cache
+D:\itlaproII\shopping\Shopping\shopping.Infrastructure\obj\Debug\net6.0\shopping.Infrastructure.AssemblyInfo.cs
+D:\itlaproII\shopping\Shopping\shopping.Infrastructure\obj\Debug\net6.0\shopping.Infrastructure.csproj.CoreCompileInputs.cache
+D:\itlaproII\shopping\Shopping\shopping.Infrastructure\obj\Debug\net6.0\shopping.Infrastructure.dll
+D:\itlaproII\shopping\Shopping\shopping.Infrastructure\obj\Debug\net6.0\refint\shopping.Infrastructure.dll
+D:\itlaproII\shopping\Shopping\shopping.Infrastructure\obj\Debug\net6.0\shopping.Infrastructure.pdb
+D:\itlaproII\shopping\Shopping\shopping.Infrastructure\obj\Debug\net6.0\ref\shopping.Infrastructure.dll
