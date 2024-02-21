@@ -4,6 +4,7 @@ using shopping.Domain.Core;
 
 namespace shopping.Domain.Entities.Production
 {
+    
     public class Category : BaseEntity
     {
         public int categoryid { get; set; }
