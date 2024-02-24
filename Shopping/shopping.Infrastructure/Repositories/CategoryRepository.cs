@@ -1,83 +1,40 @@
 ﻿
 
 
+using Microsoft.Extensions.Logging;
 using shopping.Domain.Entities.Production;
 using shopping.Infrastructure.Context;
+using shopping.Infrastructure.Core;
 using shopping.Infrastructure.Exceptions;
 using shopping.Infrastructure.Interfaces;
 
 namespace shopping.Infrastructure.Repositories
 {
-    public class CategoryRepository : ICategoryRepository
+    public class CategoryRepository : BaseRepository<Category>, ICategoryRepository
     {
         private readonly ShopContext context;
+        private readonly ILogger<CategoryRepository> logger;
 
-        public CategoryRepository(ShopContext context)
+        public CategoryRepository(ShopContext context, ILogger<CategoryRepository> logger) : base(context)
         {
             this.context = context;
+            this.logger = logger;
         }
-        public void Create(Category category)
+
+        public override List<Category> GetEntities()
+        {
+            return base.GetEntities().Where(ca => !ca.deleted).ToList();
+        }
+        public override void Update(Category entity)
         {
             try
             {
+                var categoryToUpdate = this.GetEntity(entity.categoryid);
 
-                if (context.Categories.Any(ca => ca.categoryname == category.categoryname))
-                    throw new CategoryException("La categoria se encuentra registrada.");
-
-          
-
-                this.context.Categories.Add(category);
-                this.context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-        }
-
-        public List<Category> GetCategories()
-        {
-            return this.context.Categories
-                               .Where(ca => !ca.deleted)
-                               .ToList();
-        }
-
-        public Category GetCategory(int categoryId)
-        {
-            return this.context.Categories.Find(categoryId);
-           
-        }
-
-        public void Remove(Category category)
-        {
-            try
-            {
-                var categoryToRemoe = this.GetCategory(category.categoryid);
-
-                categoryToRemoe.deleted = true;
-                categoryToRemoe.delete_date = category.delete_date;
-                categoryToRemoe.delete_user = category.delete_user;
-
-                this.context.Categories.Update(categoryToRemoe);
-                this.context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public void Update(Category category)
-        {
-            try
-            {
-                var categoryToUpdate = this.GetCategory(category.categoryid);
-
-                categoryToUpdate.categoryname = category.categoryname;
-                categoryToUpdate.description = category.description;
-                categoryToUpdate.modify_user = category.modify_user;
-                categoryToUpdate.modify_date = category.modify_date;
+                categoryToUpdate.categoryname = entity.categoryname;
+                categoryToUpdate.description = entity.description;
+                categoryToUpdate.modify_user = entity.modify_user;
+                categoryToUpdate.modify_date = entity.modify_date;
 
                 this.context.Categories.Update(categoryToUpdate);
                 this.context.SaveChanges();
@@ -85,8 +42,27 @@ namespace shopping.Infrastructure.Repositories
             catch (Exception ex)
             {
 
-                throw ex;
+                this.logger.LogError("Error actualizando la categoria", ex.ToString());
             }
         }
+        public override void Save(Category entity)
+        {
+            try
+            {
+
+
+                if (context.Categories.Any(ca => ca.categoryname == entity.categoryname))
+                    throw new CategoryException("La categoria se encuentra registrada.");
+
+
+                this.context.Categories.Add(entity);
+                this.context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError("Error creando la categoria", ex.ToString());
+            }
+        }
+        
     }
 }

@@ -1,82 +1,54 @@
 ﻿
 
+using Microsoft.Extensions.Logging;
 using shopping.Domain.Entities.Production;
 using shopping.Infrastructure.Context;
+using shopping.Infrastructure.Core;
 using shopping.Infrastructure.Interfaces;
+using shopping.Infrastructure.Models;
 
 namespace shopping.Infrastructure.Repositories
 {
-    public class ProductRepository : IProductRespository
+    public class ProductRepository : BaseRepository<Product>, IProductRespository
     {
         private readonly ShopContext context;
+        private readonly ILogger<ProductRepository> logger;
 
-        public ProductRepository(ShopContext context)
+        public ProductRepository(ShopContext context, ILogger<ProductRepository> logger) : base(context)
         {
             this.context = context;
+            this.logger = logger;
         }
-        public void Create(Product product)
+       
+        public List<ProductModel> GetProductsByCategory(int categoryId)
         {
+            List<ProductModel> products = new List<ProductModel>();
             try
             {
-                this.context.Products.Add(product);
-                this.context.SaveChanges();
+                products = (from pro in this.context.Products
+                             join ca in this.context.Categories on pro.categoryid equals ca.categoryid
+                             where pro.categoryid == categoryId
+                             select new ProductModel()
+                             {
+                                 CategoryId = ca.categoryid,
+                                 CatetoryName = ca.categoryname,
+                                 Discontinued = pro.discontinued,
+                                 ProductId = pro.productid,
+                                 ProductName = pro.productname,
+                                 UnitPrice = pro.unitprice
+                             }).ToList();
+
+                return products;
+
             }
             catch (Exception ex)
             {
 
-                throw ex;
-            }
-        }
-
-        public Product GetProduct(int productId)
-        {
-            return this.context.Products.Find(productId);
-        }
-
-        public List<Product> GetProducts()
-        {
-            return this.context.Products.ToList();
-        }
-
-        public void Remove(Product product)
-        {
-            try
-            {
-
-                Product producttoRemove = this.GetProduct(product.productid);
-                this.context.Products.Remove(producttoRemove);
-                this.context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
-        }
-
-        public void Update(Product product)
-        {
-            try
-            {
-                Product productToUpdate = this.GetProduct(product.productid);
-
-                productToUpdate.supplierid = product.supplierid;
-                productToUpdate.modify_date = product.modify_date;
-                productToUpdate.modify_user = product.modify_user;
-                productToUpdate.unitprice = product.unitprice;
-                productToUpdate.categoryid = product.categoryid;
-                productToUpdate.discontinued = product.discontinued;
-                productToUpdate.productname = product.productname;
-
-                this.context.Products.Update(productToUpdate);
-                this.context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
+                this.logger.LogError("Error obteniendo los productos", ex.ToString());
             }
 
+            return products;
         }
+
     }
 }

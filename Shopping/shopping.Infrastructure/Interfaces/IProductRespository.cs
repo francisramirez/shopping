@@ -1,14 +1,14 @@
 ﻿
+
 using shopping.Domain.Entities.Production;
+using shopping.Domain.Repository;
+using shopping.Infrastructure.Models;
 
 namespace shopping.Infrastructure.Interfaces
 {
-    public interface IProductRespository
+    public interface IProductRespository : IBaseRepository<Product>
     {
-        void Create(Product product);
-        void Update(Product product);
-        void Remove(Product product);
-        List<Product> GetProducts();
-        Product GetProduct(int productId);
+        List<ProductModel> GetProductsByCategory(int categoryId);
+       
     }
 }

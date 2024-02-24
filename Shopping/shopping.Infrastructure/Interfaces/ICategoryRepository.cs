@@ -1,14 +1,11 @@
 ﻿
 using shopping.Domain.Entities.Production;
+using shopping.Domain.Repository;
 
 namespace shopping.Infrastructure.Interfaces
 {
-    public interface ICategoryRepository
+    public interface ICategoryRepository : IBaseRepository<Category>
     {
-        void Create(Category category);
-        void Update(Category category);
-        void Remove(Category category);
-        List<Category> GetCategories();
-        Category GetCategory(int categoryId);
+        
     }
 }

@@ -10,3 +10,6 @@ D:\itlaproII\shopping\Shopping\shopping.Infrastructure\obj\Debug\net6.0\shopping
 D:\itlaproII\shopping\Shopping\shopping.Infrastructure\obj\Debug\net6.0\refint\shopping.Infrastructure.dll
 D:\itlaproII\shopping\Shopping\shopping.Infrastructure\obj\Debug\net6.0\shopping.Infrastructure.pdb
 D:\itlaproII\shopping\Shopping\shopping.Infrastructure\obj\Debug\net6.0\ref\shopping.Infrastructure.dll
+D:\itlaproII\shopping\Shopping\shopping.Infrastructure\bin\Debug\net6.0\shopping.Domain.dll
+D:\itlaproII\shopping\Shopping\shopping.Infrastructure\bin\Debug\net6.0\shopping.Domain.pdb
+D:\itlaproII\shopping\Shopping\shopping.Infrastructure\obj\Debug\net6.0\shopping.Infrastructure.csproj.CopyComplete
