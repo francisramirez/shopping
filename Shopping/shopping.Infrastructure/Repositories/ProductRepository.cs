@@ -19,7 +19,35 @@ namespace shopping.Infrastructure.Repositories
             this.context = context;
             this.logger = logger;
         }
-       
+        public override bool Exists(Func<Product, bool> filter)
+        {
+            return base.Exists(filter);
+        }
+        public override void Save(Product entity)
+        {
+            base.Save(entity);
+        }
+        public override void Update(Product entity)
+        {
+            base.Update(entity);
+        }
+        public override void Remove(Product entity)
+        {
+            base.Remove(entity);
+        }
+        public override List<Product> FindAll(Func<Product, bool> filter)
+        {
+            return base.FindAll(filter);
+        }
+        public override List<Product> GetEntities()
+        {
+            return base.GetEntities();
+        }
+        public override Product GetEntity(int id)
+        {
+            return base.GetEntity(id);
+        }
+
         public List<ProductModel> GetProductsByCategory(int categoryId)
         {
             List<ProductModel> products = new List<ProductModel>();
