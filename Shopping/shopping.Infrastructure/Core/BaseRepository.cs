@@ -34,7 +34,7 @@ namespace shopping.Infrastructure.Core
             return DbEntity.Find(id);
         }
 
-        public void Remove(TEntity entity)
+        public virtual void Remove(TEntity entity)
         {
             DbEntity.Update(entity);
             this.context.SaveChanges();

@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using shopping.Api.Dtos.Category;
 using shopping.Api.Models;
+using shopping.Domain.Entities.Production;
 using shopping.Infrastructure.Interfaces;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace shopping.Api.Controllers
 {
@@ -20,11 +21,10 @@ namespace shopping.Api.Controllers
         [HttpGet("GetCategories")]
         public IActionResult Get()
         {
-            var categories = this.categoryRepository.GetEntities().Select(cd => new CategoryAddModel()
+            var categories = this.categoryRepository.GetEntities().Select(cd => new CategoryGetModel()
             {
                 CategoryId = cd.categoryid,
-                CreateDate = cd.creation_date,
-                CreateUser = cd.creation_user,
+                CreationDate = cd.creation_date,
                 Description = cd.description,
                 Name = cd.categoryname
             });
@@ -38,34 +38,62 @@ namespace shopping.Api.Controllers
         public IActionResult Get(int id)
         {
             var category = this.categoryRepository.GetEntity(id);
-            return Ok(category);
+
+            CategoryGetModel categoryGetModel = new CategoryGetModel()
+            {
+                CategoryId = category.categoryid,
+                CreationDate = category.creation_date,
+                Description = category.description,
+                Name = category.categoryname
+            };
+
+            return Ok(categoryGetModel);
         }
 
-        // POST api/<CategoryController>
         [HttpPost("SaveProduct")]
-        public void Post([FromBody] CategoryAddModel categoryAddModel)
+        public IActionResult Post([FromBody] CategoryAddDto categoryAddModel)
         {
             this.categoryRepository.Save(new Domain.Entities.Production.Category()
             {
                 categoryname = categoryAddModel.Name,
-                creation_date = categoryAddModel.CreateDate,
-                creation_user = categoryAddModel.CreateUser,
+                creation_date = categoryAddModel.ChangeDate,
+                creation_user = categoryAddModel.UserId,
                 description = categoryAddModel.Description
             });
 
+            return Ok("Categoria guardada correctamente.");
 
         }
 
-        // PUT api/<CategoryController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        
+        [HttpPost("UpdateCategory")]
+        public IActionResult Put([FromBody] CategoryUpdteDto categoryUpdte)
         {
+            this.categoryRepository.Update(new Category()
+            {
+                categoryid = categoryUpdte.CategoryId,
+                categoryname = categoryUpdte.Name,
+                modify_date = categoryUpdte.ChangeDate,
+                modify_user = categoryUpdte.UserId,
+                description = categoryUpdte.Description,
+            });
+
+            return Ok("Categoria actualizada correctamente.");
         }
 
-        // DELETE api/<CategoryController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+
+        [HttpPost("RemoveCategory")]
+        public IActionResult Remove([FromBody] CategoryRemoveDto categoryRemove)
         {
+            
+            this.categoryRepository.Remove(new Category()
+            {
+                categoryid = categoryRemove.CategoryId,
+                delete_date = categoryRemove.ChangeDate,
+                delete_user = categoryRemove.UserId
+            });
+
+            return Ok("Categoria eliminada correctamente.");
         }
     }
 }

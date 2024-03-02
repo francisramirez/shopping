@@ -31,6 +31,11 @@ namespace shopping.Infrastructure.Repositories
             {
                 var categoryToUpdate = this.GetEntity(entity.categoryid);
 
+                if (categoryToUpdate is null)
+                    throw new CategoryException("La categoria no existe.");
+
+
+
                 categoryToUpdate.categoryname = entity.categoryname;
                 categoryToUpdate.description = entity.description;
                 categoryToUpdate.modify_user = entity.modify_user;
@@ -63,6 +68,29 @@ namespace shopping.Infrastructure.Repositories
                 this.logger.LogError("Error creando la categoria", ex.ToString());
             }
         }
-        
+
+        public override void Remove(Category entity)
+        {
+            try
+            {
+                Category categoryToRemove = this.GetEntity(entity.categoryid);
+
+                if (categoryToRemove is null)
+                    throw new CategoryException("La categoria no existe.");
+
+                categoryToRemove.delete_date = entity.delete_date;
+                categoryToRemove.delete_user = entity.delete_user;
+                categoryToRemove.deleted = true;
+
+                this.context.Categories.Update(categoryToRemove);
+                this.context.SaveChanges();
+                
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogError("", ex.ToString());
+            }
+        }
+
     }
 }
