@@ -50,7 +50,7 @@ namespace shopping.Api.Controllers
             return Ok(categoryGetModel);
         }
 
-        [HttpPost("SaveProduct")]
+        [HttpPost("SaveCategory")]
         public IActionResult Post([FromBody] CategoryAddDto categoryAddModel)
         {
             this.categoryRepository.Save(new Domain.Entities.Production.Category()
