@@ -10,7 +10,8 @@
         "dependencies": {
           "Swashbuckle.AspNetCore": "6.2.3",
           "shopping.Application": "1.0.0",
-          "shopping.Infrastructure": "1.0.0"
+          "shopping.Infrastructure": "1.0.0",
+          "shopping.Ioc": "1.0.0"
         },
         "runtime": {
           "shopping.Api.dll": {}
@@ -490,6 +491,15 @@
         "runtime": {
           "shopping.Infrastructure.dll": {}
         }
+      },
+      "shopping.Ioc/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "6.0.1",
+          "shopping.Application": "1.0.0"
+        },
+        "runtime": {
+          "shopping.Ioc.dll": {}
+        }
       }
     }
   },
@@ -832,6 +842,11 @@
       "sha512": ""
     },
     "shopping.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "shopping.Ioc/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

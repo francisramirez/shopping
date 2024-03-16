@@ -12,18 +12,18 @@ namespace shopping.Api.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        private readonly ICategoryService categoryService;
+        private readonly ICategoryNewService categoryService;
 
-        public CategoryController(ICategoryService  categoryService)
+        public CategoryController(ICategoryNewService categoryService)
         {
-            this.categoryService =categoryService;
+            this.categoryService = categoryService;
         }
 
         [HttpGet("GetCategories")]
         public IActionResult Get()
         {
-        
-            var result = this.categoryService.GetCategories();
+
+            var result = this.categoryService.GetAll();
 
             if (!result.Success)
             {
@@ -38,7 +38,7 @@ namespace shopping.Api.Controllers
         [HttpGet("GetCategoryById")]
         public IActionResult Get(int id)
         {
-            var result = this.categoryService.GetCategory(id);
+            var result = this.categoryService.Get(id);
 
             if (!result.Success)
             {
@@ -49,10 +49,10 @@ namespace shopping.Api.Controllers
         }
 
         [HttpPost("SaveCategory")]
-        public IActionResult Post([FromBody] Application.Dtos.Category.CategoryAddDto  categoryAddModel)
+        public IActionResult Post([FromBody] Application.Dtos.Category.CategoryAddDto categoryAddModel)
         {
 
-           var result =  this.categoryService.SaveCategory(categoryAddModel);
+            var result = this.categoryService.Save(categoryAddModel);
 
             if (!result.Success)
             {
@@ -63,14 +63,14 @@ namespace shopping.Api.Controllers
 
         }
 
-        
+
         [HttpPost("UpdateCategory")]
         public IActionResult Put([FromBody] Application.Dtos.Category.CategoryUpdteDto categoryUpdte)
         {
-            
 
-            var result = this.categoryService.UpdateCategory(categoryUpdte);
-           
+
+            var result = this.categoryService.Update(categoryUpdte);
+
             if (!result.Success)
             {
                 return BadRequest(result);
@@ -78,14 +78,14 @@ namespace shopping.Api.Controllers
 
             return Ok(result);
 
-         
+
         }
 
 
         [HttpPost("RemoveCategory")]
         public IActionResult Remove([FromBody] Application.Dtos.Category.CategoryRemoveDto categoryRemove)
         {
-            var result = this.categoryService.RemoveCategory(categoryRemove);
+            var result = this.categoryService.Remove(categoryRemove);
 
             if (!result.Success)
             {

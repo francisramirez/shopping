@@ -863,6 +863,20 @@
         "runtime": {
           "bin/placeholder/shopping.Infrastructure.dll": {}
         }
+      },
+      "shopping.Ioc/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection": "6.0.1",
+          "shopping.Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/shopping.Ioc.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/shopping.Ioc.dll": {}
+        }
       }
     }
   },
@@ -2168,13 +2182,19 @@
       "type": "project",
       "path": "../shopping.Infrastructure/shopping.Infrastructure.csproj",
       "msbuildProject": "../shopping.Infrastructure/shopping.Infrastructure.csproj"
+    },
+    "shopping.Ioc/1.0.0": {
+      "type": "project",
+      "path": "../shopping.Ioc/shopping.Ioc.csproj",
+      "msbuildProject": "../shopping.Ioc/shopping.Ioc.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Swashbuckle.AspNetCore >= 6.2.3",
       "shopping.Application >= 1.0.0",
-      "shopping.Infrastructure >= 1.0.0"
+      "shopping.Infrastructure >= 1.0.0",
+      "shopping.Ioc >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2215,6 +2235,9 @@
             },
             "D:\\itlaproII\\shopping\\Shopping\\shopping.Infrastructure\\shopping.Infrastructure.csproj": {
               "projectPath": "D:\\itlaproII\\shopping\\Shopping\\shopping.Infrastructure\\shopping.Infrastructure.csproj"
+            },
+            "D:\\itlaproII\\shopping\\Shopping\\shopping.Ioc\\shopping.Ioc.csproj": {
+              "projectPath": "D:\\itlaproII\\shopping\\Shopping\\shopping.Ioc\\shopping.Ioc.csproj"
             }
           }
         }

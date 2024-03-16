@@ -1,9 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using shopping.Application.Contracts;
-using shopping.Application.Service;
 using shopping.Infrastructure.Context;
-using shopping.Infrastructure.Interfaces;
-using shopping.Infrastructure.Repositories;
+using shopping.Ioc.CategoryDependency;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,13 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ShopContext>(options => 
 options.UseSqlServer(builder.Configuration.GetConnectionString("ShopContext")));
 
+// Course Dependencies //
 
-// Repositories
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-
-
-// App Services
-builder.Services.AddTransient<ICategoryService, CategoryService>();
+builder.Services.AddCategoryDependency();
 
 
 builder.Services.AddControllers();
