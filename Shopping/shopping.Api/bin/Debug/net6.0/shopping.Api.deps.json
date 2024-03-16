@@ -9,6 +9,7 @@
       "shopping.Api/1.0.0": {
         "dependencies": {
           "Swashbuckle.AspNetCore": "6.2.3",
+          "shopping.Application": "1.0.0",
           "shopping.Infrastructure": "1.0.0"
         },
         "runtime": {
@@ -466,6 +467,15 @@
           }
         }
       },
+      "shopping.Application/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.0",
+          "shopping.Infrastructure": "1.0.0"
+        },
+        "runtime": {
+          "shopping.Application.dll": {}
+        }
+      },
       "shopping.Domain/1.0.0": {
         "runtime": {
           "shopping.Domain.dll": {}
@@ -810,6 +820,11 @@
       "sha512": "sha512-CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
+    },
+    "shopping.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "shopping.Domain/1.0.0": {
       "type": "project",

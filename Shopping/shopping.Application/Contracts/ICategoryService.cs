@@ -8,8 +8,8 @@ namespace shopping.Application.Contracts
     {
         ServiceResult<List<CategoryGetModel>> GetCategories();
         ServiceResult<CategoryGetModel> GetCategory(int categoryId);
-        ServiceResult<CategoryGetModel> SaveCategory(CategoryDto categoryDto);
-        ServiceResult<CategoryGetModel> UpdateCategory(CategoryDto categoryDto);
-        ServiceResult<CategoryGetModel> RemoveCategory(CategoryDto categoryDto);
+        ServiceResult<CategoryGetModel> SaveCategory(CategoryAddDto categoryAddDto);
+        ServiceResult<CategoryGetModel> UpdateCategory(CategoryUpdteDto  categoryUpdteDto);
+        ServiceResult<CategoryGetModel> RemoveCategory(CategoryRemoveDto  categoryRemoveDto);
     }
 }

@@ -825,6 +825,20 @@
           }
         }
       },
+      "shopping.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.0",
+          "shopping.Infrastructure": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/shopping.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/shopping.Application.dll": {}
+        }
+      },
       "shopping.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -2140,6 +2154,11 @@
         "version.txt"
       ]
     },
+    "shopping.Application/1.0.0": {
+      "type": "project",
+      "path": "../shopping.Application/shopping.Application.csproj",
+      "msbuildProject": "../shopping.Application/shopping.Application.csproj"
+    },
     "shopping.Domain/1.0.0": {
       "type": "project",
       "path": "../shopping.Domain/shopping.Domain.csproj",
@@ -2154,6 +2173,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Swashbuckle.AspNetCore >= 6.2.3",
+      "shopping.Application >= 1.0.0",
       "shopping.Infrastructure >= 1.0.0"
     ]
   },
@@ -2190,6 +2210,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "D:\\itlaproII\\shopping\\Shopping\\shopping.Application\\shopping.Application.csproj": {
+              "projectPath": "D:\\itlaproII\\shopping\\Shopping\\shopping.Application\\shopping.Application.csproj"
+            },
             "D:\\itlaproII\\shopping\\Shopping\\shopping.Infrastructure\\shopping.Infrastructure.csproj": {
               "projectPath": "D:\\itlaproII\\shopping\\Shopping\\shopping.Infrastructure\\shopping.Infrastructure.csproj"
             }

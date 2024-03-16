@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using shopping.Api.Dtos.Category;
 using shopping.Api.Models;
+using shopping.Application.Contracts;
 using shopping.Domain.Entities.Production;
 using shopping.Infrastructure.Interfaces;
 
@@ -11,25 +12,25 @@ namespace shopping.Api.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        private readonly ICategoryRepository categoryRepository;
+        private readonly ICategoryService categoryService;
 
-        public CategoryController(ICategoryRepository categoryRepository)
+        public CategoryController(ICategoryService  categoryService)
         {
-            this.categoryRepository = categoryRepository;
+            this.categoryService =categoryService;
         }
 
         [HttpGet("GetCategories")]
         public IActionResult Get()
         {
-            var categories = this.categoryRepository.GetEntities().Select(cd => new CategoryGetModel()
-            {
-                CategoryId = cd.categoryid,
-                CreationDate = cd.creation_date,
-                Description = cd.description,
-                Name = cd.categoryname
-            });
+        
+            var result = this.categoryService.GetCategories();
 
-            return Ok(categories);
+            if (!result.Success)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
 
         }
 
@@ -37,63 +38,61 @@ namespace shopping.Api.Controllers
         [HttpGet("GetCategoryById")]
         public IActionResult Get(int id)
         {
-            var category = this.categoryRepository.GetEntity(id);
+            var result = this.categoryService.GetCategory(id);
 
-            CategoryGetModel categoryGetModel = new CategoryGetModel()
+            if (!result.Success)
             {
-                CategoryId = category.categoryid,
-                CreationDate = category.creation_date,
-                Description = category.description,
-                Name = category.categoryname
-            };
+                return BadRequest(result);
+            }
 
-            return Ok(categoryGetModel);
+            return Ok(result);
         }
 
         [HttpPost("SaveCategory")]
-        public IActionResult Post([FromBody] CategoryAddDto categoryAddModel)
+        public IActionResult Post([FromBody] Application.Dtos.Category.CategoryAddDto  categoryAddModel)
         {
-            this.categoryRepository.Save(new Domain.Entities.Production.Category()
-            {
-                categoryname = categoryAddModel.Name,
-                creation_date = categoryAddModel.ChangeDate,
-                creation_user = categoryAddModel.UserId,
-                description = categoryAddModel.Description
-            });
 
-            return Ok("Categoria guardada correctamente.");
+           var result =  this.categoryService.SaveCategory(categoryAddModel);
+
+            if (!result.Success)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
 
         }
 
         
         [HttpPost("UpdateCategory")]
-        public IActionResult Put([FromBody] CategoryUpdteDto categoryUpdte)
+        public IActionResult Put([FromBody] Application.Dtos.Category.CategoryUpdteDto categoryUpdte)
         {
-            this.categoryRepository.Update(new Category()
-            {
-                categoryid = categoryUpdte.CategoryId,
-                categoryname = categoryUpdte.Name,
-                modify_date = categoryUpdte.ChangeDate,
-                modify_user = categoryUpdte.UserId,
-                description = categoryUpdte.Description,
-            });
+            
 
-            return Ok("Categoria actualizada correctamente.");
+            var result = this.categoryService.UpdateCategory(categoryUpdte);
+           
+            if (!result.Success)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
+
+         
         }
 
 
         [HttpPost("RemoveCategory")]
-        public IActionResult Remove([FromBody] CategoryRemoveDto categoryRemove)
+        public IActionResult Remove([FromBody] Application.Dtos.Category.CategoryRemoveDto categoryRemove)
         {
-            
-            this.categoryRepository.Remove(new Category()
-            {
-                categoryid = categoryRemove.CategoryId,
-                delete_date = categoryRemove.ChangeDate,
-                delete_user = categoryRemove.UserId
-            });
+            var result = this.categoryService.RemoveCategory(categoryRemove);
 
-            return Ok("Categoria eliminada correctamente.");
+            if (!result.Success)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
         }
     }
 }

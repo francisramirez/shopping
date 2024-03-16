@@ -76,7 +76,7 @@ namespace shopping.Application.Service
             return result;
         }
 
-        public ServiceResult<CategoryGetModel> RemoveCategory(CategoryDto categoryDto)
+        public ServiceResult<CategoryGetModel> RemoveCategory(CategoryRemoveDto categoryDto)
         {
             ServiceResult<CategoryGetModel> result = new ServiceResult<CategoryGetModel>();
             
@@ -85,8 +85,8 @@ namespace shopping.Application.Service
                 this.categoryRepository.Remove(new Category()
                 {
                     categoryid = categoryDto.CategoryId,
-                    delete_date = categoryDto.DeleteDate,
-                    delete_user = categoryDto.DeleteUser
+                    delete_date = categoryDto.ChangeDate,
+                    delete_user = categoryDto.UserId
                 });
             }
             catch (Exception ex)
@@ -100,20 +100,20 @@ namespace shopping.Application.Service
             return result;
         }
 
-        public ServiceResult<CategoryGetModel> SaveCategory(CategoryDto categoryDto)
+        public ServiceResult<CategoryGetModel> SaveCategory(CategoryAddDto categoryDto)
         {
             ServiceResult<CategoryGetModel> result = new ServiceResult<CategoryGetModel>();
 
             try
             {
 
-                if (string.IsNullOrEmpty(categoryDto.CategoryName))
+                if (string.IsNullOrEmpty(categoryDto.Name))
                 {
                     result.Success = false;
                     result.Message = "La categoria es requerida.";
                     return result;
                 }
-                if (categoryDto.CategoryName.Length > 15)
+                if (categoryDto.Name.Length > 15)
                 {
                     result.Success = false;
                     result.Message = "El nombre de la categoria debe tener 15 carácteres.";
@@ -133,18 +133,18 @@ namespace shopping.Application.Service
                     return result;
                 }
 
-                if (this.categoryRepository.Exists(ca => ca.categoryname == categoryDto.CategoryName))
+                if (this.categoryRepository.Exists(ca => ca.categoryname == categoryDto.Name))
                 {
                     result.Success = false;
-                    result.Message = $"La categoria { categoryDto.CategoryName } ya existe.";
+                    result.Message = $"La categoria { categoryDto.Name } ya existe.";
                     return result;
                 }
 
                 this.categoryRepository.Save(new Domain.Entities.Production.Category()
                 {
-                    categoryname = categoryDto.CategoryName,
-                    creation_date = categoryDto.CreationDate,
-                    creation_user = categoryDto.CreationUser,
+                    categoryname = categoryDto.Name,
+                    creation_date = categoryDto.ChangeDate,
+                    creation_user = categoryDto.UserId,
                     description = categoryDto.Description
                 });
 
@@ -160,7 +160,7 @@ namespace shopping.Application.Service
             return result;
         }
 
-        public ServiceResult<CategoryGetModel> UpdateCategory(CategoryDto categoryDto)
+        public ServiceResult<CategoryGetModel> UpdateCategory(CategoryUpdteDto categoryDto)
         {
             ServiceResult<CategoryGetModel> result = new ServiceResult<CategoryGetModel>();
 
@@ -168,13 +168,13 @@ namespace shopping.Application.Service
             {
 
 
-                if (string.IsNullOrEmpty(categoryDto.CategoryName))
+                if (string.IsNullOrEmpty(categoryDto.Name))
                 {
                     result.Success = false;
                     result.Message = "La categoria es requerida.";
                     return result;
                 }
-                if (categoryDto.CategoryName.Length > 15)
+                if (categoryDto.Name.Length > 15)
                 {
                     result.Success = false;
                     result.Message = "El nombre de la categoria debe tener 15 carácteres.";
@@ -197,9 +197,9 @@ namespace shopping.Application.Service
                 this.categoryRepository.Update(new Category()
                 {
                     categoryid = categoryDto.CategoryId,
-                    categoryname = categoryDto.CategoryName,
-                    modify_date = categoryDto.ModifyDate,
-                    modify_user = categoryDto.ModifyUser,
+                    categoryname = categoryDto.Name,
+                    modify_date = categoryDto.ChangeDate,
+                    modify_user = categoryDto.UserId,
                     description = categoryDto.Description,
                 });
 

@@ -68,3 +68,5 @@ D:\itlaproII\shopping\Shopping\shopping.Api\bin\Debug\net6.0\shopping.Domain.dll
 D:\itlaproII\shopping\Shopping\shopping.Api\bin\Debug\net6.0\shopping.Infrastructure.dll
 D:\itlaproII\shopping\Shopping\shopping.Api\bin\Debug\net6.0\shopping.Infrastructure.pdb
 D:\itlaproII\shopping\Shopping\shopping.Api\bin\Debug\net6.0\shopping.Domain.pdb
+D:\itlaproII\shopping\Shopping\shopping.Api\bin\Debug\net6.0\shopping.Application.dll
+D:\itlaproII\shopping\Shopping\shopping.Api\bin\Debug\net6.0\shopping.Application.pdb

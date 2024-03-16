@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using shopping.Application.Contracts;
+using shopping.Application.Service;
 using shopping.Infrastructure.Context;
 using shopping.Infrastructure.Interfaces;
 using shopping.Infrastructure.Repositories;
@@ -17,6 +19,7 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 
 // App Services
+builder.Services.AddTransient<ICategoryService, CategoryService>();
 
 
 builder.Services.AddControllers();
