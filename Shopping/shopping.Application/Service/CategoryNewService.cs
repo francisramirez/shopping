@@ -110,6 +110,7 @@ namespace shopping.Application.Service
                
                 if (!resutlIsVali.Success)
                 {
+                    result.Success = resutlIsVali.Success;
                     result.Message = resutlIsVali.Message;
                     return result;
                 }
@@ -144,6 +145,7 @@ namespace shopping.Application.Service
 
                 if (!resutlIsVali.Success)
                 {
+                    result.Success = resutlIsVali.Success;
                     result.Message = resutlIsVali.Message;
                     return result;
                 }
